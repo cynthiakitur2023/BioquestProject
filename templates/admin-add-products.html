@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Bioquest</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- bootstrap core css -->
+
+  <link type="text/css" href= "{% static "css/bootstrap.css" %}"   rel="stylesheet"/>
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+
+  <link href="{% static "css/style.css" %}"  rel="stylesheet" />
+  <!-- responsive style -->
+  <link href= "{% static "css/responsive.css" %}" rel="stylesheet" />
+     <link rel="icon" href="{% static "images/Artboard 1(3).jpg" %}">
+</head>
+
+<body>
+{% if messages %}
+        {% for message in messages %}
+            <p class="text-success">{{ message }}</p><br>
+        {% endfor %}
+
+    {% endif %}
+
+<!-- header section start -->
+<div class="header_section">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+
+          <img src="/static/images/Logo-01.png" alt="Bioquest Kenya Logo" class="bqlogo"
+          width="220px"
+          height="80px"
+          >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url "index" %}>Home</a>
+                        <a href=""></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url "about" %}>About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url "contact" %}>Contact Us</a>
+                    </li>
+                    <div class="dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url "products" %}>Our Products</a>
+                        </li>
+                        <div class="dropdown-content">
+                            {% for category in categories %}
+                                <a href="/category_products/{{ category.id }}">{{ category.category }}</a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </ul>
+
+    </nav>
+</div>
+</div>
+
+<p>To add another product fill in the data below;</p>
+<!-- header section end -->
+{% comment %}<form action="{% url 'add_products' %}" method="post" style="padding-left: 35px">
+    {% csrf_token %}
+    <input placeholder="Enter product name" type="text" name="name"><br><br>
+    <label>Select category</label><br>
+    <select name="category_id" id="">
+        {% for x in categories %}
+            <option value="{{ x.id }}">{{ x.category }}</option>
+        {% endfor %}
+
+    </select><br><br>
+    <input placeholder="Enter product description" type="text" name="description"><br><br>
+    {{ form }}<br><br>
+    <input type="submit" value="Save">
+</form>{% endcomment %}
+
+{#{% for product in products %}#}
+{#    <p>{{ product.name }}</p>#}
+{#{% endfor %}#}
+
+
+<form action="{% url 'add_products' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Enter Name of product</h3>
+    <br>
+    <select name="variety" id="">
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.category }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <textarea name="description" id="" cols="30" rows="10"></textarea><br><br>
+    {{ form }}
+    <input type="submit" value="Upload">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- health section -->
+   <br>
+
+
+
+
+  <!-- end contact section -->
+
+
+
+
+  <script type="text/javascript" src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    });
+
+  </script>
+  <script type="text/javascript">
+    $(".owl-2").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

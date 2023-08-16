@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+{% load admin_button %}
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Bioquest</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- bootstrap core css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+
+  <link href="{% static "css/style.css" %}" rel="stylesheet" />
+  <!-- responsive style -->
+
+  <link href="{% static "css/responsive.css" %}" rel="stylesheet" />
+     <link rel="icon" href="{% static "images/Artboard 1(3).jpg" %}">
+</head>
+
+<body class="sub_page">
+
+   <!-- header section start -->
+      <div class="header_section">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+
+               <a class="logo" href={% url 'index' %}><img src={% static 'images/lastresizedloggo.jpg' %}></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href={% url 'index' %}>Home</a>
+                         <a href=""></a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href={% url 'about' %}>About</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href={% url 'contact' %}>Contact Us</a>
+                     </li>
+                  <div class="dropdown">
+                     <li class="nav-item">
+                        <a class="nav-link" href={% url 'products' %}>Our Products</a>
+                     </li>
+
+                                    <div class="dropdown-content">
+                            {% for category in categories %}
+                                <a href="/category_products/{{ category.id }}">{{ category.category }}</a>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                  </ul>
+
+         </nav>
+         </div>
+      </div>
+<!-- header section end -->
+  </div>
+
+
+
+
+<div class="col-md-8">
+                <h2>View Data</h2>
+ <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                          <th scope="col">Phone</th>
+
+                        <th scope="col">Delete</th>
+
+                      </tr>
+                    </thead>
+                    <tbody cl
+                           ass="table-group-divider">
+
+                    {% for d in data %}
+                      <tr>
+                        <th scope="row">{{d.id}}</th>
+                        <td>{{d.name}}</td>
+                        <td>{{d.email}}</td>
+                        <td>{{d.phone}}</td>
+
+
+
+                          </form>
+                        <td><a href="/delete/{{d.id}}" type="button" class="btn btn-outline-danger">Delete</a></td>
+                                            </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+
+
+            </div>
+
+
+
+
+
+  <!-- info section -->
+<section class="info_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-sm-9 col-7">
+                <div class="info_contact">
+                    <h4>
+                        BioquestKenya
+                    </h4>
+                    <img src="/static/images/Logo-01.png" alt="Bioquest Kenya Logo" class="bqlogo"
+                         style="width: 40%;"
+                    >
+                    <div class="">
+                        <h6>
+                            <br><br><br>
+                            info@bioquest.com
+                        </h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-3 col-5">
+                <div class="row col-12 info_menu d-flex justify-content-end flex-column">
+                    <h4 class="">
+                        Menu
+                    </h4>
+
+                    <ul class="navbar-nav  ">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%  url 'about' %}"> About </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}"> Contact Us </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'display' %}"> Our Products </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+</section>
+
+
+<!-- end info section -->
+
+  <script type="text/javascript" src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bootstrap.js" %}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
+  </script>
+  <script type="text/javascript">
+    $(".owl-carousel").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    });
+  </script>
+  <script type="text/javascript">
+    $(".owl-2").owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      navText: [],
+      autoplay: true,
+
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 2
+        },
+        1000: {
+          items: 4
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
